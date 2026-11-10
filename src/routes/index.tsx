@@ -7,6 +7,7 @@ import { Hours } from "@/components/site/Hours";
 import { PHOTOS, CENTRE } from "@/data/centre";
 import { STORES } from "@/data/stores";
 import { meta } from "@/lib/meta";
+import { GeoIntro } from "@/components/site/GeoIntro";
 
 export const Route = createFileRoute("/")({
   head: () => meta("Gustav Voigts Centre — Shopping in the heart of Windhoek", "A little of everything on Independence Avenue: 31 listed businesses across three levels, from groceries and fashion to banking and the Avani Hotel.", "/"),
@@ -26,7 +27,8 @@ const services = [
 function Home() {
   return (
     <>
-      <section className="relative h-[78vh] min-h-[520px] bg-ink text-ink-foreground">
+      <GeoIntro />
+      <section id="home-content" tabIndex={-1} className="relative h-[78vh] min-h-[520px] bg-ink text-ink-foreground">
         <Photo src={PHOTOS.mainCourt} alt="The main court inside Gustav Voigts Centre" className="gvc-hero-art absolute inset-0 h-full w-full opacity-70" />
         <div className="absolute inset-0 bg-ink/35" aria-hidden />
         <div className="container-site relative flex h-full flex-col justify-end pb-14">

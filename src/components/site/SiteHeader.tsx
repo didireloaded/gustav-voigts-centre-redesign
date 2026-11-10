@@ -63,7 +63,7 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background">
+    <header id="site-header" className="sticky top-0 z-50 bg-background">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 focus:bg-yellow focus:px-4 focus:py-2 focus:font-bold">
         Skip to content
       </a>
