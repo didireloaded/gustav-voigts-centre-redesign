@@ -444,3 +444,9 @@
     transition: none !important;
   }
 }
+
+/* Scroll duration is intentional: enough for the exterior, inside and levels,
+   without forcing visitors through several full screens of empty movement. */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .gvc-architecture { height: 245svh; }
+}
