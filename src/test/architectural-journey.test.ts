@@ -11,15 +11,15 @@ describe("optimized scroll crossfade", () => {
   });
   it("crossfades from exterior to interior with no image wipe", () => {
     const state = getArchitecturalScene(0.33);
-    expect(state.exteriorOpacity).toBeGreaterThan(0);
+    expect(state.exteriorOpacity).toBe(1);
     expect(state.interiorOpacity).toBeGreaterThan(0);
-    expect(state.exteriorOpacity + state.interiorOpacity).toBeCloseTo(1, 5);
+    expect(state.interiorOpacity).toBeLessThan(1);
   });
   it("crossfades from interior to levels without black gaps", () => {
     const state = getArchitecturalScene(0.74);
-    expect(state.interiorOpacity).toBeGreaterThan(0);
+    expect(state.interiorOpacity).toBe(1);
     expect(state.levelsOpacity).toBeGreaterThan(0);
-    expect(state.interiorOpacity + state.levelsOpacity).toBeCloseTo(1, 5);
+    expect(state.levelsOpacity).toBeLessThan(1);
   });
   it("ends on the three listed levels", () => {
     const end = getArchitecturalScene(1);

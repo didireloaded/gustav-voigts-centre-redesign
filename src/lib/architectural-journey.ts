@@ -12,8 +12,10 @@ export function getArchitecturalScene(value: number) {
 
   return {
     progress,
-    exteriorOpacity: 1 - toInterior,
-    interiorOpacity: toInterior * (1 - toLevels),
+    // Keep the outgoing photograph fully opaque until the incoming
+    // photograph has reached opacity 1. This avoids a dark alpha dip.
+    exteriorOpacity: 1 - segment(progress, 0.46, 0.52),
+    interiorOpacity: toInterior * (1 - segment(progress, 0.86, 0.92)),
     levelsOpacity: toLevels,
     arrivalTextOpacity: 1 - segment(progress, 0.10, 0.26),
     interiorTextOpacity: segment(progress, 0.31, 0.45) * (1 - segment(progress, 0.60, 0.73)),
