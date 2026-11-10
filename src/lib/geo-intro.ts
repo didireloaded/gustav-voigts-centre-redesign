@@ -1,6 +1,4 @@
 /** Utilities for a scroll-linked intro with native page scrolling. */
-export const INTRO_SESSION_KEY = "gvc-geographic-intro-seen-v1";
-
 export const clamp01 = (value: number) =>
   Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : 0;
 
