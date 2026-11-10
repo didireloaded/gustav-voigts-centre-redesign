@@ -64,12 +64,16 @@ export function ArchitecturalJourney() {
             className="gvc-architecture-photo"
             opacity={state.interiorOpacity}
             scale={state.interiorScale}
+            reveal={state.interiorReveal}
+            revealDirection="side"
           />
           <ScenePhotograph
             src={PHOTOS.atriumLevels}
             className="gvc-architecture-photo"
             opacity={state.levelsOpacity}
             scale={state.levelsScale}
+            reveal={state.levelsReveal}
+            revealDirection="up"
           />
         </div>
         <div className="gvc-architecture-shade" aria-hidden="true" />
@@ -131,7 +135,7 @@ export function ArchitecturalJourney() {
             </div>
           </div>
         </div>
-        <div className="gvc-architecture-simple-interior">
+        <div className="gvc-architecture-simple-interior" data-scroll-reveal="media">
           <ScenePhotograph src={PHOTOS.mainCourt3} className="gvc-architecture-simple-photo" opacity={1} scale={1} />
           <div className="gvc-architecture-simple-story">
             <p className="gvc-architecture-kicker">Step inside</p>
@@ -139,7 +143,7 @@ export function ArchitecturalJourney() {
             <p>Find the stores and services you need across three levels.</p>
           </div>
         </div>
-        <div className="gvc-architecture-simple-floors">
+        <div className="gvc-architecture-simple-floors" data-scroll-reveal="text">
           {FLOORS.map(floor => (
             <Link key={floor.id} to="/stores" search={{ q: "", floor: floor.id, category: "" }} className="gvc-architecture-simple-floor">
               <span>{floor.name}</span>
@@ -153,18 +157,48 @@ export function ArchitecturalJourney() {
   );
 }
 
-function ScenePhotograph({ src, opacity, scale, priority = false, className }: {
+function ScenePhotograph({
+  src,
+  opacity,
+  scale,
+  priority = false,
+  className,
+  reveal = 1,
+  revealDirection = "up",
+}: {
   src: string;
   opacity: number;
   scale: number;
   priority?: boolean;
   className: string;
+  reveal?: number;
+  revealDirection?: "up" | "side";
 }) {
-  const [failed, setFailed] = useState(false);
+  const [failedSource, setFailedSource] = useState<string | null>(null);
+  const backup = PHOTOS.mainCourt3;
+  const imageSrc = failedSource !== src ? src : failedSource !== backup ? backup : null;
+  const clip = revealDirection === "side"
+    ? `inset(0 ${(1 - reveal) * 100}% 0 0)`
+    : `inset(${(1 - reveal) * 100}% 0 0 0)`;
+
   return (
-    <div className={className} style={{ opacity, transform: `scale(${scale})` }}>
-      {!failed && (
-        <img src={src} alt="" loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : undefined} decoding="async" onError={() => setFailed(true)} />
+    <div
+      className={className}
+      style={{
+        opacity,
+        transform: `scale(${scale})`,
+        clipPath: clip,
+      }}
+    >
+      {imageSrc && (
+        <img
+          src={imageSrc}
+          alt=""
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
+          decoding="async"
+          onError={() => setFailedSource(imageSrc)}
+        />
       )}
     </div>
   );

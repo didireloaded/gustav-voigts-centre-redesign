@@ -7,6 +7,8 @@ describe("architectural journey timeline", () => {
     expect(start.exteriorOpacity).toBe(1);
     expect(start.arrivalTextOpacity).toBe(1);
     expect(start.interiorOpacity).toBe(0);
+    expect(start.interiorReveal).toBe(0);
+    expect(start.levelsReveal).toBe(0);
     expect(start.levelsOpacity).toBe(0);
     expect(start.progress).toBe(0);
   });
@@ -14,12 +16,14 @@ describe("architectural journey timeline", () => {
     const middle = getArchitecturalScene(0.5);
     expect(middle.exteriorOpacity).toBe(0);
     expect(middle.interiorOpacity).toBe(1);
+    expect(middle.interiorReveal).toBe(1);
     expect(middle.levelsOpacity).toBe(0);
     expect(middle.interiorTextOpacity).toBeGreaterThan(0);
   });
   it("reveals all three levels before leaving the story", () => {
     const end = getArchitecturalScene(1);
     expect(end.levelsOpacity).toBe(1);
+    expect(end.levelsReveal).toBe(1);
     expect(end.levelsTextOpacity).toBe(1);
     expect(end.floorReveals).toEqual([1, 1, 1]);
   });
