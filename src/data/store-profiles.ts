@@ -30,7 +30,7 @@ const verifiedIntroductions: Readonly<Record<string, string>> = {
   "Torga Optical":
     "Torga Optical's Gustav Voigts Centre branch provides eye examinations, prescription eyewear and contact lenses. Its official branch page identifies Shop 6A on Lower Ground.",
   "Avani Hotel":
-    "Avani Windhoek Hotel & Casino is a hotel in the heart of Windhoek. The centre's published directory lists Avani on Upper Level.",
+    "Avani Hotel, also known as Avani Windhoek Hotel & Casino, provides accommodation in the city centre. Gustav Voigts Centre’s published directory lists it on Upper Level.",
   "Clicks":
     "Clicks is listed in the centre's published directory under Beauty & Health on Street Level.",
 };

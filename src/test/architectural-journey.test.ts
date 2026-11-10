@@ -29,6 +29,13 @@ describe("optimized scroll crossfade", () => {
     expect(end.levelsTextOpacity).toBe(1);
     expect(end.floorReveals).toEqual([1, 1, 1]);
   });
+  it("never requires clip masks or transforms in the scene data", () => {
+    const state = getArchitecturalScene(0.5);
+    expect("interiorReveal" in state).toBe(false);
+    expect("levelsReveal" in state).toBe(false);
+    expect("interiorScale" in state).toBe(false);
+  });
+
   it("clamps impossible scroll values and NaN", () => {
     expect(getArchitecturalScene(-8).progress).toBe(0);
     expect(getArchitecturalScene(9).progress).toBe(1);

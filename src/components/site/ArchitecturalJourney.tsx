@@ -96,6 +96,7 @@ export function ArchitecturalJourney() {
           <ScenePhotograph
             src={PHOTOS.entrance}
             className="gvc-architecture-photo"
+            priority
             layerRef={exteriorRef}
             initialOpacity={initial.exteriorOpacity}
           />
@@ -262,17 +263,20 @@ function ScenePhotograph({
   className: string;
   layerRef?: RefObject<HTMLDivElement | null>;
 }) {
-  const [failed, setFailed] = useState(false);
+  const [failedSources, setFailedSources] = useState<string[]>([]);
+  // These are all actual photos published by the centre, never stock or mock images.
+  const imageSrc = [src, PHOTOS.mainCourt3, PHOTOS.entrance2]
+    .find((candidate) => !failedSources.includes(candidate)) ?? null;
   return (
     <div ref={layerRef} className={className} style={{ opacity: initialOpacity }}>
-      {!failed && (
+      {imageSrc && (
         <img
-          src={src}
+          src={imageSrc}
           alt=""
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "low"}
           decoding="async"
-          onError={() => setFailed(true)}
+          onError={() => setFailedSources((current) => [...current, imageSrc])}
         />
       )}
     </div>
