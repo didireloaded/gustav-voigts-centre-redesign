@@ -28,3 +28,16 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Website design craft and anti-slop guidelines
+
+For any website or responsive interface design, redesign, implementation, animation pass, or visual audit in this project:
+
+1. Read [Website Design Craft](.agents/skills/website-design-craft/SKILL.md) and the references relevant to the task before making visual decisions.
+2. Apply the 20 AI design slop indicators as an evidence-based review, not an absolute ban on individual visual elements. Use the purposeful motion playbook selectively.
+3. Design around Gustav Voigts Centre's actual visitors, verified tenants, useful wayfinding, authentic photography and approved brand identity. Do not invent business details, statistics, services, events, testimonials, logos or integration outcomes.
+4. Preserve the approved City Plaza-inspired editorial direction (charcoal, white/neutral and restrained yellow accents, authentic imagery, strong typography and varied page rhythm) without copying City Plaza's identity or content. Avoid generic SaaS layouts, repeated bordered cards, gratuitous badges, gradients, tiny labels and distracting animations.
+5. Keep mobile, tablet, desktop, keyboard, touch, accessibility, reduced-motion and loading/empty/error states in scope. Verify behavior and layout before reporting success.
+6. If the user asks for planning or auditing only, do not implement. If asked to build, follow the existing stack, preserve working behavior and run the relevant tests.
+
+The main skill is **general-purpose**. These Gustav Voigts Centre-specific design decisions are scoped to this repository. Source files are in `.agents/skills/website-design-craft/`.
