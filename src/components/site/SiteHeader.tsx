@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X, Clock, MapPin } from "lucide-react";
 import { CENTRE } from "@/data/centre";
 
@@ -13,12 +13,54 @@ export const NAV = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    panelRef.current?.querySelector<HTMLElement>("a[href]")?.focus();
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        triggerRef.current?.focus();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const focusables = Array.from(panelRef.current?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])") ?? []);
+      if (!focusables.length) {
+        event.preventDefault();
+        return;
+      }
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      } else if (!panelRef.current?.contains(document.activeElement)) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previousOverflow;
+    };
   }, [open]);
+
+  const closeAfterNavigation = () => {
+    setOpen(false);
+    requestAnimationFrame(() => document.getElementById("main")?.focus());
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background">
@@ -45,26 +87,44 @@ export function SiteHeader() {
               </li>
             ))}
           </ul>
-          <button className="inline-flex size-11 items-center justify-center md:hidden" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>
-            {open ? <X /> : <Menu />}
+          <button
+            ref={triggerRef}
+            className="inline-flex size-11 items-center justify-center md:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((value) => !value)}
+          >
+            <span aria-hidden="true" className="relative block size-6">
+              <Menu className={`gvc-menu-icon absolute inset-0 size-6 ${open ? "rotate-90 opacity-0" : "rotate-0 opacity-100"}`} />
+              <X className={`gvc-menu-icon absolute inset-0 size-6 ${open ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"}`} />
+            </span>
           </button>
         </nav>
       </div>
-      {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[100px] z-40 bg-ink text-ink-foreground md:hidden">
-          <ul className="container-site flex flex-col pt-6">
-            {NAV.map((n) => (
-              <li key={n.to} className="border-b border-ink-border">
-                <Link to={n.to} onClick={() => setOpen(false)} className="block py-5 display-lg !text-4xl" activeProps={{ className: "block py-5 display-lg !text-4xl text-yellow" }}>{n.label}</Link>
-              </li>
-            ))}
-          </ul>
-          <div className="container-site mt-8 space-y-2 text-ink-muted">
-            <a href={CENTRE.phoneHref} className="block text-lg text-ink-foreground">{CENTRE.phone}</a>
-            <a href={`mailto:${CENTRE.email}`} className="block">{CENTRE.email}</a>
-          </div>
+      <div
+        ref={panelRef}
+        id="mobile-menu"
+        role="dialog"
+        aria-label="Mobile navigation"
+        aria-modal={open}
+        aria-hidden={!open}
+        inert={!open}
+        data-open={open ? "true" : "false"}
+        className="gvc-menu-panel fixed inset-x-0 bottom-0 top-[100px] z-40 overflow-y-auto bg-ink text-ink-foreground md:hidden"
+      >
+        <ul className="container-site flex flex-col pt-6">
+          {NAV.map((n) => (
+            <li key={n.to} className="border-b border-ink-border">
+              <Link to={n.to} onClick={closeAfterNavigation} className="block py-5 display-lg !text-4xl" activeProps={{ className: "block py-5 display-lg !text-4xl text-yellow" }}>{n.label}</Link>
+            </li>
+          ))}
+        </ul>
+        <div className="container-site mt-8 space-y-2 pb-12 text-ink-muted">
+          <a href={CENTRE.phoneHref} className="block text-lg text-ink-foreground">{CENTRE.phone}</a>
+          <a href={`mailto:${CENTRE.email}`} className="block">{CENTRE.email}</a>
         </div>
-      )}
+      </div>
     </header>
   );
 }

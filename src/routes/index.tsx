@@ -27,14 +27,14 @@ function Home() {
   return (
     <>
       <section className="relative h-[78vh] min-h-[520px] bg-ink text-ink-foreground">
-        <Photo src={PHOTOS.mainCourt} alt="The main court inside Gustav Voigts Centre" className="absolute inset-0 h-full w-full opacity-70" />
+        <Photo src={PHOTOS.mainCourt} alt="The main court inside Gustav Voigts Centre" className="gvc-hero-art absolute inset-0 h-full w-full opacity-70" />
         <div className="absolute inset-0 bg-ink/35" aria-hidden />
         <div className="container-site relative flex h-full flex-col justify-end pb-14">
-          <p className="eyebrow animate-rise"><span className="mr-3 inline-block bg-yellow px-2 py-1 text-accent-foreground">Independence Avenue</span>Windhoek, Namibia</p>
-          <h1 className="display-xl mt-6 max-w-5xl animate-rise">A little of everything. Right in the heart of Windhoek.</h1>
-          <div className="mt-8 flex flex-wrap gap-3 animate-rise">
-            <Link to="/stores" search={{ q: "", floor: "", category: "" }} className="inline-flex items-center gap-2 bg-yellow px-6 py-4 font-bold text-accent-foreground hover:bg-background">Find a store <ArrowRight className="size-5" aria-hidden /></Link>
-            <Link to="/visit" className="inline-flex items-center gap-2 border-2 border-ink-foreground px-6 py-4 font-bold hover:bg-ink-foreground hover:text-ink">Plan your visit</Link>
+          <p className="eyebrow"><span className="mr-3 inline-block bg-yellow px-2 py-1 text-accent-foreground">Independence Avenue</span>Windhoek, Namibia</p>
+          <h1 className="display-xl mt-6 max-w-5xl">A little of everything. Right in the heart of Windhoek.</h1>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to="/stores" search={{ q: "", floor: "", category: "" }} className="gvc-pressable inline-flex items-center gap-2 bg-yellow px-6 py-4 font-bold text-accent-foreground hover:bg-background">Find a store <ArrowRight className="size-5" aria-hidden /></Link>
+            <Link to="/visit" className="gvc-pressable inline-flex items-center gap-2 border-2 border-ink-foreground px-6 py-4 font-bold hover:bg-ink-foreground hover:text-ink">Plan your visit</Link>
           </div>
         </div>
       </section>
@@ -42,7 +42,7 @@ function Home() {
       <section className="container-site grid gap-12 py-24 md:grid-cols-12 md:py-32">
         <p className="eyebrow md:col-span-3">Welcome</p>
         <div className="md:col-span-9">
-          <h2 className="display-lg max-w-4xl">Namibia's first mall, still at the centre of the capital.</h2>
+          <h2 className="gvc-scroll-intro display-lg max-w-4xl">Namibia's first mall, still at the centre of the capital.</h2>
           <div className="mt-10 grid gap-8 text-lg leading-relaxed text-muted-foreground md:grid-cols-2">
             <p>Gustav Voigts Centre began as the country's very first mall and today rises over three levels on Independence Avenue.</p>
             <p>Groceries, fashion, a pharmacy, banking, jewellers, a bookshop and the Avani Hotel — {STORES.length} businesses currently listed in the directory.</p>
@@ -56,7 +56,7 @@ function Home() {
 
       <section className="bg-ink py-24 text-ink-foreground">
         <div className="container-site">
-          <div className="flex flex-wrap items-end justify-between gap-6"><h2 className="display-lg">Plan your visit</h2><Link to="/visit" className="font-semibold link-underline">All visitor information</Link></div>
+          <div className="flex flex-wrap items-end justify-between gap-6"><h2 className="gvc-scroll-intro display-lg">Plan your visit</h2><Link to="/visit" className="font-semibold link-underline">All visitor information</Link></div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {[{ i: MapPin, t: "Getting here", d: CENTRE.address, img: PHOTOS.entrance, to: "/visit" as const },
               { i: Car, t: "Parking", d: "Parking entrance on Independence Avenue.", img: PHOTOS.entrance2, to: "/visit" as const },
@@ -72,7 +72,7 @@ function Home() {
       </section>
 
       <section className="container-site py-24">
-        <div className="flex flex-wrap items-end justify-between gap-6"><h2 className="display-lg">In the centre</h2><Link to="/stores" search={{ q: "", floor: "", category: "" }} className="font-semibold link-underline">All {STORES.length} businesses</Link></div>
+        <div className="flex flex-wrap items-end justify-between gap-6"><h2 className="gvc-scroll-intro display-lg">In the centre</h2><Link to="/stores" search={{ q: "", floor: "", category: "" }} className="font-semibold link-underline">All {STORES.length} businesses</Link></div>
         <ul className="mt-12 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((s) => STORES.find((x) => x.slug === s)!).map((s) => <li key={s.slug}><StoreTile store={s} /></li>)}
         </ul>
@@ -81,13 +81,13 @@ function Home() {
       <section className="bg-neutral-surface py-24">
         <div className="container-site">
           <p className="eyebrow">Floor finder</p>
-          <h2 className="display-lg mb-12 mt-4">Three levels. Pick one.</h2>
+          <h2 className="gvc-scroll-intro display-lg mb-12 mt-4">Three levels. Pick one.</h2>
           <FloorFinder />
         </div>
       </section>
 
       <section className="container-site py-24">
-        <h2 className="display-lg max-w-3xl">Everyday errands, under one roof.</h2>
+        <h2 className="gvc-scroll-intro display-lg max-w-3xl">Everyday errands, under one roof.</h2>
         <ul className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <li key={s.t} className="border-t-4 border-ink pt-6">

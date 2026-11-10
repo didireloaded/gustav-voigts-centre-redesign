@@ -41,3 +41,5 @@ For any website or responsive interface design, redesign, implementation, animat
 6. If the user asks for planning or auditing only, do not implement. If asked to build, follow the existing stack, preserve working behavior and run the relevant tests.
 
 The main skill is **general-purpose**. These Gustav Voigts Centre-specific design decisions are scoped to this repository. Source files are in `.agents/skills/website-design-craft/`.
+
+For Gustav Voigts Centre-specific interaction work, follow [the motion contract](docs/design/motion-system.md). Never add scroll pinning or an archival frame sequence before approved source imagery is available.

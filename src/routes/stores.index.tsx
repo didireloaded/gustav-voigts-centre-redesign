@@ -46,7 +46,7 @@ function Stores() {
           {(q || floor || category) && <button onClick={() => set({ q: "", floor: "", category: "" })} className="inline-flex items-center gap-1 font-semibold link-underline"><X className="size-4" aria-hidden />Clear filters</button>}
         </div>
         {list.length ? (
-          <ul className="mt-px grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">{list.map((s) => <li key={s.slug}><StoreTile store={s} /></li>)}</ul>
+          <ul key={`${floor}|${category}`} className={`mt-px grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4 ${q.trim() ? "" : "gvc-filter-stagger"}`}>{list.map((s, index) => <li key={s.slug} style={{ animationDelay: `${Math.min(index, 5) * 30}ms` }}><StoreTile store={s} /></li>)}</ul>
         ) : <p className="py-16 text-lg text-muted-foreground">No businesses match. Try another search or clear the filters.</p>}
       </section>
     </>

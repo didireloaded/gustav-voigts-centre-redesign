@@ -11,6 +11,7 @@ export function FloorFinder({ dark = false }: { dark?: boolean }) {
   const onKey = (e: React.KeyboardEvent, i: number) => {
     const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
     if (!d) return;
+    e.preventDefault();
     const n = (i + d + FLOORS.length) % FLOORS.length;
     setFloor(FLOORS[n].id);
     tabs.current[n]?.focus();
@@ -19,7 +20,7 @@ export function FloorFinder({ dark = false }: { dark?: boolean }) {
   return (
     <div className="grid gap-10 lg:grid-cols-12">
       <div className="lg:col-span-4">
-        <div role="tablist" aria-label="Choose a level" className="flex flex-col">
+        <div role="tablist" aria-label="Choose a level" aria-orientation="vertical" className="flex flex-col">
           {FLOORS.map((f, i) => {
             const active = f.id === floor;
             return (
@@ -48,7 +49,7 @@ export function FloorFinder({ dark = false }: { dark?: boolean }) {
           Architectural floor plan and unit positions are pending confirmation from centre management. Levels shown as published in the official directory.
         </p>
       </div>
-      <div role="tabpanel" id={`panel-${floor}`} aria-labelledby={`tab-${floor}`} className="lg:col-span-8">
+      <div key={floor} role="tabpanel" id={`panel-${floor}`} aria-labelledby={`tab-${floor}`} className="gvc-panel-enter lg:col-span-8">
         <ul className={cn("grid gap-px sm:grid-cols-2", dark ? "bg-ink-border" : "bg-border")}>
           {list.map((s) => (
             <li key={s.slug} className={dark ? "bg-ink" : "bg-background"}>
