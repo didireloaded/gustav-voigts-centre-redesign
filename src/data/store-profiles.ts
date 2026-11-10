@@ -58,7 +58,8 @@ type PhotoSelection = {
   imageUrl: string;
   imageAlt: string;
   sourceUrl: string;
-  specificImage: true;
+  specificImage: boolean;
+  caption?: string;
 };
 
 /** Photos published by the centre or the named business. */
@@ -77,9 +78,10 @@ const verifiedStorePhotos: Record<string, PhotoSelection> = {
   },
   "Flower Love": {
     imageUrl: PHOTOS.flowers,
-    imageAlt: "Flowers business imagery published by Gustav Voigts Centre",
+    imageAlt: "Floral business imagery from the centre's older gallery; exact tenant identification is unconfirmed",
     sourceUrl: "https://gustavvoigtscentre.com.na/",
-    specificImage: true,
+    specificImage: false,
+    caption: "Floral imagery from the centre archive · Tenant attribution to confirm",
   },
   "Torga Optical": {
     imageUrl: "https://torgaoptical.co.za/images/thumbs/1384057_20220524_085328%20cropped.jpeg",
@@ -89,9 +91,10 @@ const verifiedStorePhotos: Record<string, PhotoSelection> = {
   },
   "Wellness Centre": {
     imageUrl: PHOTOS.wellness,
-    imageAlt: "Wellness business imagery published by Gustav Voigts Centre",
+    imageAlt: "Wellness imagery published in the centre's older gallery; exact tenant identity is unconfirmed",
     sourceUrl: "https://gustavvoigtscentre.com.na/",
-    specificImage: true,
+    specificImage: false,
+    caption: "Wellness imagery from the centre archive · Tenant attribution to confirm",
   },
 };
 
@@ -126,8 +129,8 @@ export function getStoreProfile(store: Store): StoreProfile {
       `${store.name} is listed by Gustav Voigts Centre under ${store.listedCategory} on ${store.floor.replace(/-/g, " ")}. Contact the business to learn more.`,
     imageUrl: specific?.imageUrl ?? centreImage,
     imageAlt: specific?.imageAlt ?? "An interior view of Gustav Voigts Centre, not the individual shop",
-    imageCaption: specific ? "Business imagery" : "Inside Gustav Voigts Centre · Centre photograph, not this store",
-    specificImage: Boolean(specific),
+    imageCaption: specific?.caption ?? (specific ? "Business imagery" : "Inside Gustav Voigts Centre · Centre photograph, not this store"),
+    specificImage: Boolean(specific?.specificImage),
     sourceUrl: specific?.sourceUrl,
     officialUrl: officialPages[store.name],
     unit: store.name === "Torga Optical" ? "Shop 6A" : undefined,

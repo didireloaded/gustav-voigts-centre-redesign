@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export function ScrollRevealManager() {
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reduced.matches || !("IntersectionObserver" in window)) return;
+    if (reduced.matches || !("IntersectionObserver" in window) || !("MutationObserver" in window)) return;
 
     const seen = new WeakSet<Element>();
     const selector = ".gvc-scroll-intro, .gvc-reveal-into-view, .gvc-reveal-media, [data-scroll-reveal]";
