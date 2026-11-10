@@ -496,8 +496,7 @@ html.gvc-intro-is-active #site-header {
 .gvc-architecture-actions { display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-top: 1rem; }
 .gvc-architecture-scroll-hint { display: inline-flex; align-items: center; gap: .6rem; font-size: .83rem; font-weight: 600; }
 .gvc-architecture-buttons { display: flex; align-items: center; gap: .85rem; }
-.gvc-architecture-primary, .gvc-architecture-secondary, .gvc-architecture-skip { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-height: 44px; font-weight: 700; text-decoration: none; }
-.gvc-architecture-primary { background: #f9e500; color: #151515; padding: .8rem 1.2rem; }
+.gvc-architecture-primary, .gvc-architecture-secondary, .gvc-architecture-primary { background: #f9e500; color: #151515; padding: .8rem 1.2rem; }
 .gvc-architecture-primary:hover { background: #fff; }
 .gvc-architecture-skip { color: #fff; padding: .5rem .75rem; text-decoration: underline; text-underline-offset: 4px; }
 .gvc-architecture-simple { display: none; }
@@ -510,7 +509,6 @@ html.gvc-intro-is-active #site-header {
 .gvc-heritage-heading > p { max-width: 29rem; font-size: 1.12rem; line-height: 1.65; }
 .gvc-heritage-timeline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 5rem); margin-top: clamp(4rem, 8vw, 8rem); }
 .gvc-heritage-milestone { min-width: 0; }
-.gvc-heritage-index { font-size: .85rem; font-weight: 700; letter-spacing: .08em; }
 .gvc-heritage-milestone h3 { margin: 1.6rem 0; font: 800 clamp(4rem, 7vw, 8rem)/.9 var(--font-display); letter-spacing: -.05em; }
 .gvc-heritage-rule { height: 2px; background: #151515; margin-bottom: 1.3rem; }
 .gvc-heritage-milestone h4 { font: 800 clamp(1.2rem, 2vw, 1.65rem)/1.2 var(--font-display); letter-spacing: -.02em; }
@@ -560,3 +558,174 @@ html.gvc-intro-is-active #site-header {
 .gvc-architecture-mobile-hero > .gvc-architecture-photo { z-index: 0; }
 .gvc-architecture-mobile-hero > .gvc-architecture-mobile-tint { z-index: 1; }
 .gvc-architecture-mobile-hero > .gvc-architecture-mobile-text { position: relative; z-index: 2; }
+
+/*
+ * Geographic opening, refined for the real site.
+ * Keep native scrolling and the ordinary navigation fully available.
+ */
+.gvc-geo-intro {
+  margin-top: 0;
+  height: 220svh;
+  z-index: 1;
+  background: #080c13;
+}
+.gvc-geo-sticky {
+  top: 100px;
+  height: calc(100svh - 100px);
+  background: #080c13;
+}
+.gvc-geo-earth {
+  width: min(65vw, 66svh, 710px);
+  top: 48%;
+  transform-origin: 46% 46%;
+  filter: drop-shadow(0 0 35px rgba(65, 135, 198, 0.16));
+}
+.gvc-geo-earth img,
+.gvc-geo-planet-fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.gvc-geo-earth::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset -22px -13px 28px rgba(4, 10, 23, 0.38),
+    inset 5px 6px 14px rgba(144, 198, 226, 0.28), 0 0 22px rgba(108, 177, 219, 0.18);
+  pointer-events: none;
+}
+.gvc-geo-planet-fallback {
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(181, 224, 236, .55), transparent 25%),
+    radial-gradient(ellipse at 49% 50%, #497e70 4%, #195466 34%, #0c2744 68%, #071526);
+}
+.gvc-geo-region,
+.gvc-geo-destination {
+  z-index: 1;
+  gap: 11px;
+}
+.gvc-geo-region strong,
+.gvc-geo-destination strong {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 3px 24px rgba(2, 7, 14, .56);
+}
+.gvc-geo-map-outline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(61vw, 470px);
+  max-height: min(65svh, 520px);
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  opacity: .31;
+  filter: brightness(0) invert(1);
+}
+.gvc-geo-crosshair { opacity: .44; }
+.gvc-geo-finish {
+  overflow: hidden;
+  background: #151515;
+}
+.gvc-geo-finish img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+}
+.gvc-geo-finish-shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .3);
+}
+.gvc-geo-skip { display: none; }
+.gvc-architecture { height: 260svh; }
+
+/* The global nav remains usable during the journey. */
+html.gvc-intro-is-active #site-header {
+  visibility: visible;
+  pointer-events: auto;
+  background: #080c13;
+  color: #fff;
+}
+html.gvc-intro-is-active #site-header nav {
+  background: #080c13;
+}
+html.gvc-intro-is-active #site-header .border-b {
+  border-color: rgba(255, 255, 255, .18);
+}
+html.gvc-intro-is-active #site-header .text-muted-foreground {
+  color: #d0d4db;
+}
+
+/* Meaningful editorial reveals across the site, never hidden without JS/CSS. */
+@keyframes gvc-editorial-enter {
+  from { opacity: .78; transform: translate3d(0, 20px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes gvc-editorial-media {
+  from { opacity: .85; clip-path: inset(10% 0 0 0); transform: scale(1.025); }
+  to { opacity: 1; clip-path: inset(0); transform: scale(1); }
+}
+@keyframes gvc-editorial-rule {
+  from { transform: scaleX(.05); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .gvc-reveal-into-view {
+      animation: gvc-editorial-enter linear both;
+      animation-timeline: view(block);
+      animation-range: entry 0% entry 78%;
+    }
+    .gvc-reveal-media {
+      animation: gvc-editorial-media linear both;
+      animation-timeline: view(block);
+      animation-range: entry 0% entry 80%;
+    }
+    .gvc-heritage-rule {
+      transform-origin: left center;
+      animation: gvc-editorial-rule linear both;
+      animation-timeline: view(block);
+      animation-range: entry 0% entry 88%;
+    }
+  }
+}
+
+/* The mobile journey is lighter, but still scroll-controlled and visible. */
+@media (max-width: 767px) {
+  .gvc-geo-intro { display: block; height: 175svh; }
+  .gvc-geo-sticky { top: 100px; height: calc(100svh - 100px); }
+  .gvc-geo-earth { width: min(77vw, 57svh); }
+  .gvc-geo-region strong,
+  .gvc-geo-destination strong { font-size: clamp(2.7rem, 13vw, 5.3rem); }
+  .gvc-geo-map-outline { width: min(85vw, 380px); opacity: .22; }
+  .gvc-geo-topline { top: 25px; }
+  .gvc-geo-topline span:last-child { display: none; }
+  .gvc-geo-bottomline { bottom: 52px; }
+  .gvc-geo-scroll-hint { font-size: .68rem; }
+  .gvc-geo-progress { width: 38vw; }
+  .gvc-geo-credit { bottom: 16px; }
+  .gvc-geo-pin-label { font-size: .9rem; }
+  .gvc-geo-region,
+  .gvc-geo-destination { width: 94vw; }
+  .gvc-geo-earth,
+  .gvc-geo-region,
+  .gvc-geo-destination { will-change: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gvc-geo-intro { display: none !important; }
+  .gvc-reveal-into-view,
+  .gvc-reveal-media,
+  .gvc-heritage-rule {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
