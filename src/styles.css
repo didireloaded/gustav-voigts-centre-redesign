@@ -433,20 +433,6 @@ html.gvc-intro-is-active #site-header {
   background: var(--yellow);
   transform-origin: left center;
 }
-.gvc-geo-skip {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 44px;
-  padding: 9px 16px;
-  border: 1px solid #ffffff7a;
-  color: #fff;
-  font-weight: 700;
-}
-.gvc-geo-skip:hover, .gvc-geo-skip:focus-visible {
-  background: #fff;
-  color: #151515;
-}
 .gvc-geo-credit {
   position: absolute;
   left: clamp(20px, 4vw, 60px);
@@ -498,7 +484,6 @@ html.gvc-intro-is-active #site-header {
 .gvc-architecture-buttons { display: flex; align-items: center; gap: .85rem; }
 .gvc-architecture-primary, .gvc-architecture-secondary, .gvc-architecture-primary { background: #f9e500; color: #151515; padding: .8rem 1.2rem; }
 .gvc-architecture-primary:hover { background: #fff; }
-.gvc-architecture-skip { color: #fff; padding: .5rem .75rem; text-decoration: underline; text-underline-offset: 4px; }
 .gvc-architecture-simple { display: none; }
 
 /* Heritage uses real text and the centre's contemporary image, never fabricated archives. */
@@ -642,7 +627,6 @@ html.gvc-intro-is-active #site-header {
   inset: 0;
   background: rgba(0, 0, 0, .3);
 }
-.gvc-geo-skip { display: none; }
 .gvc-architecture { height: 260svh; }
 
 /* The global nav remains usable during the journey. */
