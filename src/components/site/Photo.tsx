@@ -9,7 +9,7 @@ export function Photo({ src, alt, className, label }: { src: string; alt: string
     return (
       <div role="img" aria-label={alt} className={cn("flex flex-col items-start justify-end gap-2 bg-neutral-surface p-6 text-muted-foreground", className)}>
         <ImageOff className="size-5" aria-hidden />
-        <span className="eyebrow">{label ?? "Centre photograph pending"}</span>
+        <span className="eyebrow">{label ?? "Photograph unavailable"}</span>
       </div>
     );
   return <img src={src} alt={alt} loading="lazy" decoding="async" onError={() => setFailed(true)} className={cn("object-cover", className)} />;
