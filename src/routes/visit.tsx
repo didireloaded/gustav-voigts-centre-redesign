@@ -21,10 +21,10 @@ function Visit() {
           <address className="mt-6 text-xl not-italic leading-relaxed">Gustav Voigts Centre<br />Independence Avenue<br />Windhoek, Namibia</address>
           <a href={CENTRE.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block bg-yellow px-6 py-4 font-bold">Open in Google Maps</a>
           <h2 className="gvc-reveal-into-view display-lg mt-16">Parking</h2>
-          <p className="mt-4 text-lg text-muted-foreground">The centre's parking entrance is on Independence Avenue. Parking rates and bay counts are pending confirmation from centre management.</p>
+          <p className="mt-4 text-lg text-muted-foreground">The centre's published information places the parking entrance on Independence Avenue. For current charges, available spaces or access questions, please call centre reception.</p>
         </div>
         <div className="space-y-6">
-          <Photo src={PHOTOS.entrance} alt="Entrance and parking at Gustav Voigts Centre" className="gvc-reveal-media aspect-[4/3] w-full" />
+          <Photo src={PHOTOS.entrance} alt="Exterior entrance of Gustav Voigts Centre" className="gvc-reveal-media aspect-[4/3] w-full" />
           <h2 className="wordmark text-3xl">Trading hours</h2>
           <Hours />
         </div>
