@@ -33,7 +33,12 @@ export function SiteFooter() {
       </div>
       <div className="container-site flex flex-col gap-2 border-t border-ink-border py-6 text-sm text-ink-muted sm:flex-row sm:justify-between">
         <p>© {new Date().getFullYear()} Gustav Voigts Centre, Windhoek.</p>
-        <p>{CENTRE.hoursNote.split(".")[0]}.</p>
+        <div className="flex flex-col gap-1 sm:items-end">
+          <p>{CENTRE.hoursNote.split(".")[0]}.</p>
+          <a href="https://logo.dev" target="_blank" rel="noopener noreferrer" className="w-fit underline-offset-4 hover:underline focus-visible:underline">
+            Logos provided by Logo.dev
+          </a>
+        </div>
       </div>
     </footer>
   );
