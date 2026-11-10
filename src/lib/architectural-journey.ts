@@ -2,7 +2,7 @@ import { clamp01, segment } from "@/lib/scroll-progress";
 
 /**
  * A low-cost photographic crossfade. The outgoing and incoming image opacity
- * always sum to one in each transition, avoiding black flashes.
+ * keep an underlying photograph opaque during each transition, avoiding black flashes.
  * Unlike the old swipe, this requires no animated clipping or mask painting.
  */
 export function getArchitecturalScene(value: number) {
