@@ -1,35 +1,37 @@
 import { describe, expect, it } from "vitest";
 import { getArchitecturalScene } from "@/lib/architectural-journey";
 
-describe("architectural journey timeline", () => {
-  it("starts with the genuine exterior and a readable arrival headline", () => {
+describe("optimized scroll crossfade", () => {
+  it("begins on a real exterior photograph with no blank frame", () => {
     const start = getArchitecturalScene(0);
     expect(start.exteriorOpacity).toBe(1);
-    expect(start.arrivalTextOpacity).toBe(1);
     expect(start.interiorOpacity).toBe(0);
-    expect(start.interiorReveal).toBe(0);
-    expect(start.levelsReveal).toBe(0);
     expect(start.levelsOpacity).toBe(0);
-    expect(start.progress).toBe(0);
+    expect(start.arrivalTextOpacity).toBe(1);
   });
-  it("crossfades into the real interior as native scroll advances", () => {
-    const middle = getArchitecturalScene(0.5);
-    expect(middle.exteriorOpacity).toBe(0);
-    expect(middle.interiorOpacity).toBe(1);
-    expect(middle.interiorReveal).toBe(1);
-    expect(middle.levelsOpacity).toBe(0);
-    expect(middle.interiorTextOpacity).toBeGreaterThan(0);
+  it("crossfades from exterior to interior with no image wipe", () => {
+    const state = getArchitecturalScene(0.33);
+    expect(state.exteriorOpacity).toBeGreaterThan(0);
+    expect(state.interiorOpacity).toBeGreaterThan(0);
+    expect(state.exteriorOpacity + state.interiorOpacity).toBeCloseTo(1, 5);
   });
-  it("reveals all three levels before leaving the story", () => {
+  it("crossfades from interior to levels without black gaps", () => {
+    const state = getArchitecturalScene(0.74);
+    expect(state.interiorOpacity).toBeGreaterThan(0);
+    expect(state.levelsOpacity).toBeGreaterThan(0);
+    expect(state.interiorOpacity + state.levelsOpacity).toBeCloseTo(1, 5);
+  });
+  it("ends on the three listed levels", () => {
     const end = getArchitecturalScene(1);
+    expect(end.exteriorOpacity).toBe(0);
+    expect(end.interiorOpacity).toBe(0);
     expect(end.levelsOpacity).toBe(1);
-    expect(end.levelsReveal).toBe(1);
     expect(end.levelsTextOpacity).toBe(1);
     expect(end.floorReveals).toEqual([1, 1, 1]);
   });
-  it("clamps overscroll and invalid progress without NaN output", () => {
-    expect(getArchitecturalScene(-3).progress).toBe(0);
-    expect(getArchitecturalScene(4).progress).toBe(1);
+  it("clamps impossible scroll values and NaN", () => {
+    expect(getArchitecturalScene(-8).progress).toBe(0);
+    expect(getArchitecturalScene(9).progress).toBe(1);
     expect(getArchitecturalScene(NaN).progress).toBe(0);
   });
-});
+}

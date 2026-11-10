@@ -1,30 +1,27 @@
-import { clamp01, sceneOpacity, segment } from "@/lib/scroll-progress";
+import { clamp01, segment } from "@/lib/scroll-progress";
 
 /**
- * Maps ordinary vertical scrolling to three photographic story beats.
- * Only existing, accurately attributed photographs may be supplied to the UI.
- * All outputs are normalized and safe for CSS opacity and transforms.
+ * A low-cost photographic crossfade. The outgoing and incoming image opacity
+ * always sum to one in each transition, avoiding black flashes.
+ * Unlike the old swipe, this requires no animated clipping or mask painting.
  */
 export function getArchitecturalScene(value: number) {
   const progress = clamp01(value);
+  const toInterior = segment(progress, 0.20, 0.46);
+  const toLevels = segment(progress, 0.61, 0.86);
 
   return {
     progress,
-    exteriorOpacity: 1 - segment(progress, 0.25, 0.43),
-    exteriorScale: 1 + 0.18 * segment(progress, 0, 0.45),
-    interiorOpacity: sceneOpacity(progress, 0.26, 0.43, 0.69, 0.86),
-    interiorReveal: segment(progress, 0.26, 0.49),
-    interiorScale: 1.08 - 0.08 * segment(progress, 0.31, 0.79),
-    levelsOpacity: segment(progress, 0.68, 0.85),
-    levelsReveal: segment(progress, 0.65, 0.87),
-    levelsScale: 1.07 - 0.07 * segment(progress, 0.67, 1),
-    arrivalTextOpacity: 1 - segment(progress, 0.14, 0.29),
-    interiorTextOpacity: sceneOpacity(progress, 0.36, 0.48, 0.59, 0.72),
+    exteriorOpacity: 1 - toInterior,
+    interiorOpacity: toInterior * (1 - toLevels),
+    levelsOpacity: toLevels,
+    arrivalTextOpacity: 1 - segment(progress, 0.10, 0.26),
+    interiorTextOpacity: segment(progress, 0.31, 0.45) * (1 - segment(progress, 0.60, 0.73)),
     levelsTextOpacity: segment(progress, 0.76, 0.89),
     floorReveals: [
-      segment(progress, 0.77, 0.84),
-      segment(progress, 0.82, 0.90),
-      segment(progress, 0.87, 0.96),
+      segment(progress, 0.76, 0.83),
+      segment(progress, 0.81, 0.89),
+      segment(progress, 0.87, 0.95),
     ],
   };
 }
