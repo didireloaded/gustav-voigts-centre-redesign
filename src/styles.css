@@ -469,3 +469,89 @@ html.gvc-intro-is-active #site-header {
     transform: none !important;
   }
 }
+
+/* Architectural journey: native vertical scrolling drives a continuous photo story.
+   Desktop only; mobile and reduced-motion users get complete static content. */
+.gvc-architecture { position: relative; height: 295svh; color: #fff; background: #151515; }
+.gvc-architecture-stage { position: sticky; top: 0; width: 100%; height: 100svh; overflow: hidden; isolation: isolate; background: #171717; }
+.gvc-architecture-art, .gvc-architecture-photo { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gvc-architecture-photo { transform-origin: center center; overflow: hidden; background: #262725; }
+.gvc-architecture-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.gvc-architecture-shade { position: absolute; z-index: 1; inset: 0; background: rgba(0,0,0,.43); pointer-events: none; }
+.gvc-architecture-topline { position: absolute; z-index: 3; inset: 5rem clamp(1.25rem, 4vw, 3.5rem) auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font: 700 .75rem/1.3 var(--font-display); letter-spacing: .08em; }
+.gvc-architecture-copy { position: absolute; z-index: 2; top: 36%; left: clamp(1.25rem, 6vw, 7rem); right: clamp(1.25rem, 6vw, 7rem); max-width: 74rem; pointer-events: none; }
+.gvc-architecture-copy h1, .gvc-architecture-display { display: block; margin: .85rem 0 0; font: 800 clamp(3.5rem, 7.2vw, 8.25rem)/.98 var(--font-display); letter-spacing: -.035em; text-wrap: balance; color: #fff; }
+.gvc-architecture-copy h1 { max-width: 12ch; }
+.gvc-architecture-display { max-width: 13ch; }
+.gvc-architecture-lead { max-width: 33rem; margin-top: 1.3rem; font-size: clamp(1rem, 1.65vw, 1.3rem); line-height: 1.45; }
+.gvc-architecture-kicker { display: flex; align-items: center; gap: .55rem; font: 700 .85rem/1.4 var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: #f9e500; }
+.gvc-architecture-levels { position: absolute; z-index: 2; top: 25%; left: clamp(1.25rem, 6vw, 7rem); right: clamp(1.25rem, 6vw, 7rem); max-width: 64rem; pointer-events: none; }
+.gvc-architecture-levels .gvc-architecture-display { font-size: clamp(3rem, 6.6vw, 7rem); }
+.gvc-architecture-floor-reveals { display: grid; gap: .4rem; margin-top: 2.1rem; max-width: 34rem; }
+.gvc-architecture-floor { display: flex; justify-content: space-between; gap: 1.2rem; border-top: 1px solid rgba(255,255,255,.55); padding: .55rem 0; font-weight: 600; }
+.gvc-architecture-floor span:last-child { font-size: .9rem; color: #e1e1e1; }
+.gvc-architecture-controls { position: absolute; z-index: 4; left: clamp(1.25rem, 4vw, 3.5rem); right: clamp(1.25rem, 4vw, 3.5rem); bottom: clamp(1.3rem, 3vw, 3rem); }
+.gvc-architecture-progress { height: 2px; width: 100%; background: rgba(255,255,255,.35); }
+.gvc-architecture-progress span { display: block; height: 2px; width: 100%; background: #f9e500; transform-origin: left center; }
+.gvc-architecture-actions { display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-top: 1rem; }
+.gvc-architecture-scroll-hint { display: inline-flex; align-items: center; gap: .6rem; font-size: .83rem; font-weight: 600; }
+.gvc-architecture-buttons { display: flex; align-items: center; gap: .85rem; }
+.gvc-architecture-primary, .gvc-architecture-secondary, .gvc-architecture-skip { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-height: 44px; font-weight: 700; text-decoration: none; }
+.gvc-architecture-primary { background: #f9e500; color: #151515; padding: .8rem 1.2rem; }
+.gvc-architecture-primary:hover { background: #fff; }
+.gvc-architecture-skip { color: #fff; padding: .5rem .75rem; text-decoration: underline; text-underline-offset: 4px; }
+.gvc-architecture-simple { display: none; }
+
+/* Heritage uses real text and the centre's contemporary image, never fabricated archives. */
+.gvc-heritage { background: #f3f2ef; color: #151515; padding: clamp(4rem, 9vw, 8rem) 0; }
+.gvc-heritage-heading { display: grid; grid-template-columns: 1.35fr .65fr; align-items: end; gap: clamp(1.8rem, 5vw, 7rem); }
+.gvc-heritage-eyebrow { display: block; margin-bottom: 1.1rem; font-size: .85rem; line-height: 1.4; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.gvc-heritage-heading h2 { max-width: 14ch; font: 800 clamp(3rem, 6vw, 6.5rem)/1 var(--font-display); letter-spacing: -.035em; }
+.gvc-heritage-heading > p { max-width: 29rem; font-size: 1.12rem; line-height: 1.65; }
+.gvc-heritage-timeline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 5rem); margin-top: clamp(4rem, 8vw, 8rem); }
+.gvc-heritage-milestone { min-width: 0; }
+.gvc-heritage-index { font-size: .85rem; font-weight: 700; letter-spacing: .08em; }
+.gvc-heritage-milestone h3 { margin: 1.6rem 0; font: 800 clamp(4rem, 7vw, 8rem)/.9 var(--font-display); letter-spacing: -.05em; }
+.gvc-heritage-rule { height: 2px; background: #151515; margin-bottom: 1.3rem; }
+.gvc-heritage-milestone h4 { font: 800 clamp(1.2rem, 2vw, 1.65rem)/1.2 var(--font-display); letter-spacing: -.02em; }
+.gvc-heritage-milestone p { margin-top: .8rem; line-height: 1.6; max-width: 24rem; color: #515151; }
+.gvc-heritage-outro { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; margin-top: clamp(5rem, 10vw, 9rem); }
+.gvc-heritage-image { position: relative; aspect-ratio: 1.3; overflow: hidden; background: #c6c7c2; }
+.gvc-heritage-image .object-cover { object-fit: cover; }
+.gvc-heritage-image > span { position: absolute; bottom: 0; left: 0; padding: .6rem .9rem; background: #151515; color: #fff; font-size: .7rem; letter-spacing: .04em; }
+.gvc-heritage-next > p { max-width: 13ch; font: 800 clamp(2rem, 3.9vw, 4.3rem)/1.05 var(--font-display); letter-spacing: -.03em; }
+.gvc-heritage-next > a { display: inline-flex; align-items: center; gap: .45rem; margin-top: 1.6rem; padding-bottom: .25rem; border-bottom: 1px solid #151515; font-weight: 700; }
+
+/* Mobile is its own editorial composition. No forced sticky pinning. */
+@media (max-width: 767px), (prefers-reduced-motion: reduce) {
+  .gvc-architecture { height: auto; }
+  .gvc-architecture-stage { display: none !important; }
+  .gvc-architecture-simple { display: block; }
+  .gvc-architecture-mobile-hero { position: relative; display: flex; min-height: min(740px, 86svh); flex-direction: column; justify-content: flex-end; isolation: isolate; background: #262725; }
+  .gvc-architecture-mobile-hero > .gvc-architecture-photo { z-index: -2; }
+  .gvc-architecture-mobile-tint { position: absolute; z-index: -1; inset: 0; background: rgba(0,0,0,.55); }
+  .gvc-architecture-mobile-text { padding: 3rem clamp(1.25rem, 5vw, 3rem); }
+  .gvc-architecture-mobile-text h1 { max-width: 12ch; margin-top: .85rem; font: 800 clamp(2.75rem, 9vw, 5rem)/1 var(--font-display); letter-spacing: -.035em; }
+  .gvc-architecture-mobile-text > p:not(.gvc-architecture-kicker) { margin-top: 1rem; line-height: 1.5; }
+  .gvc-architecture-mobile-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+  .gvc-architecture-secondary { border: 1px solid rgba(255,255,255,.9); color: #fff; padding: .8rem 1.15rem; }
+  .gvc-architecture-simple-interior { display: grid; grid-template-columns: 1fr 1fr; min-height: 26rem; background: #151515; }
+  .gvc-architecture-simple-photo { position: relative; width: 100%; min-height: 26rem; background: #313330; }
+  .gvc-architecture-simple-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .gvc-architecture-simple-story { display: flex; flex-direction: column; justify-content: center; padding: clamp(1.25rem, 5vw, 4rem); }
+  .gvc-architecture-simple-story h2 { font: 800 clamp(2.3rem, 5vw, 4rem)/1 var(--font-display); letter-spacing: -.03em; }
+  .gvc-architecture-simple-story > p:last-child { margin-top: 1rem; line-height: 1.5; color: #ddd; }
+  .gvc-architecture-simple-floors { padding: 1.5rem clamp(1.25rem, 5vw, 4rem) 3rem; background: #151515; }
+  .gvc-architecture-simple-floor { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4.25rem; border-top: 1px solid rgba(255,255,255,.35); font-weight: 800; }
+  .gvc-architecture-simple-floor > span:last-child { display: inline-flex; align-items: center; gap: .5rem; flex: 0 0 auto; color: #e1e1e1; font-weight: 500; font-size: .85rem; }
+  .gvc-heritage-heading { grid-template-columns: 1fr; }
+  .gvc-heritage-timeline { grid-template-columns: 1fr; gap: 3rem; }
+  .gvc-heritage-milestone h3 { margin: .8rem 0 1rem; }
+  .gvc-heritage-outro { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .gvc-architecture-simple-interior { grid-template-columns: 1fr; }
+  .gvc-architecture-simple-photo { min-height: 18rem; max-height: 24rem; }
+  .gvc-architecture-simple-story { padding: 2.4rem 1.25rem; }
+  .gvc-architecture-simple-floor { flex-wrap: wrap; }
+}

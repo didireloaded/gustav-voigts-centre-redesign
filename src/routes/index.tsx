@@ -8,6 +8,8 @@ import { PHOTOS, CENTRE } from "@/data/centre";
 import { STORES } from "@/data/stores";
 import { meta } from "@/lib/meta";
 import { GeoIntro } from "@/components/site/GeoIntro";
+import { ArchitecturalJourney } from "@/components/site/ArchitecturalJourney";
+import { HeritageStory } from "@/components/site/HeritageStory";
 
 export const Route = createFileRoute("/")({
   head: () => meta("Gustav Voigts Centre — Shopping in the heart of Windhoek", "A little of everything on Independence Avenue: 31 listed businesses across three levels, from groceries and fashion to banking and the Avani Hotel.", "/"),
@@ -28,20 +30,9 @@ function Home() {
   return (
     <>
       <GeoIntro />
-      <section id="home-content" tabIndex={-1} className="relative h-[78vh] min-h-[520px] bg-ink text-ink-foreground">
-        <Photo src={PHOTOS.mainCourt} alt="The main court inside Gustav Voigts Centre" className="gvc-hero-art absolute inset-0 h-full w-full opacity-70" />
-        <div className="absolute inset-0 bg-ink/35" aria-hidden />
-        <div className="container-site relative flex h-full flex-col justify-end pb-14">
-          <p className="eyebrow"><span className="mr-3 inline-block bg-yellow px-2 py-1 text-accent-foreground">Independence Avenue</span>Windhoek, Namibia</p>
-          <h1 className="display-xl mt-6 max-w-5xl">A little of everything. Right in the heart of Windhoek.</h1>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/stores" search={{ q: "", floor: "", category: "" }} className="gvc-pressable inline-flex items-center gap-2 bg-yellow px-6 py-4 font-bold text-accent-foreground hover:bg-background">Find a store <ArrowRight className="size-5" aria-hidden /></Link>
-            <Link to="/visit" className="gvc-pressable inline-flex items-center gap-2 border-2 border-ink-foreground px-6 py-4 font-bold hover:bg-ink-foreground hover:text-ink">Plan your visit</Link>
-          </div>
-        </div>
-      </section>
+      <ArchitecturalJourney />
 
-      <section className="container-site grid gap-12 py-24 md:grid-cols-12 md:py-32">
+      <section id="welcome" className="container-site scroll-mt-28 grid gap-12 py-24 md:grid-cols-12 md:py-32">
         <p className="eyebrow md:col-span-3">Welcome</p>
         <div className="md:col-span-9">
           <h2 className="gvc-scroll-intro display-lg max-w-4xl">Namibia's first mall, still at the centre of the capital.</h2>
@@ -55,6 +46,8 @@ function Home() {
           </dl>
         </div>
       </section>
+
+      <HeritageStory />
 
       <section className="bg-ink py-24 text-ink-foreground">
         <div className="container-site">

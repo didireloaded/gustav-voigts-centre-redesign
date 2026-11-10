@@ -1,0 +1,20 @@
+name: Verify website build
+
+on:
+  push:
+    branches: [main, feature/cinematic-journey]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run test
+      - run: bun run lint
+      - run: bun run build
