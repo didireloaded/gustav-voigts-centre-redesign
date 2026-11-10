@@ -1,4 +1,4 @@
-import { clamp01, sceneOpacity, segment } from "@/lib/geo-intro";
+import { clamp01, sceneOpacity, segment } from "@/lib/scroll-progress";
 
 /**
  * Maps ordinary vertical scrolling to three photographic story beats.

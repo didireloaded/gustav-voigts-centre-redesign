@@ -18,7 +18,7 @@ Use one or two meaningful scroll-driven visual moments to tell the centre's stor
 | Mobile menu | Simple 240ms slide/210ms opacity, faster exit | User opens/closes | Instant overlay when reduced motion; Escape, focus trap and focus restoration |
 | Hamburger/X | 160–170ms crossfade/rotation | Menu state change | Instant icon swap |
 
-Effects are progressive enhancements using CSS. Do not add GSAP just for these simple interactions. The visible hero title and primary actions must render without an introductory animation. No numbered scroll milestones or visible journey-skip buttons are used; global navigation remains accessible, and reduced-motion users receive a fully usable static journey.
+Effects are progressive enhancements using CSS. Do not add GSAP just for these simple interactions. The globe has been removed at the user's request. The homepage opens with the real photographic Architectural Journey. Scroll-linked transitions show the exterior, interior and three levels. Below-the-fold text and media reveal through an IntersectionObserver enhancement, with immediate content in reduced motion or no-JavaScript environments.
 
 ## Approved patterns waiting for real content or explicit implementation needs
 

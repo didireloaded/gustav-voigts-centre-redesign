@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { clamp01, progressFromSection, sceneOpacity, segment } from "@/lib/geo-intro";
+import { clamp01, progressFromSection, sceneOpacity, segment } from "@/lib/scroll-progress";
 
-describe("scroll-based geographic intro", () => {
+describe("scroll-linked scene progression", () => {
   it("normalizes native scroll position without intercepting the browser", () => {
     expect(progressFromSection(0, 3600, 900)).toBe(0);
     expect(progressFromSection(-1350, 3600, 900)).toBe(0.5);

@@ -47,7 +47,6 @@ function StorePage() {
               </div>
               <p className="mt-8 text-sm font-semibold text-muted-foreground">{store.category} · {floorName(store.floor)}</p>
               <h1 className="mt-4 max-w-[15ch] font-display text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">{store.name}</h1>
-              <p className="mt-6 max-w-[56ch] text-lg leading-relaxed text-muted-foreground">{profile.introduction}</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a href={telHref(store.phone)} className="gvc-pressable inline-flex min-h-12 items-center gap-2 bg-ink px-5 py-3 font-semibold text-ink-foreground">
                   <Phone className="size-5" aria-hidden /> Call business

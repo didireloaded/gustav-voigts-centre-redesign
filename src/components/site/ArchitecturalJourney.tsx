@@ -4,7 +4,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import { PHOTOS } from "@/data/centre";
 import { FLOORS, STORES } from "@/data/stores";
 import { getArchitecturalScene } from "@/lib/architectural-journey";
-import { progressFromSection } from "@/lib/geo-intro";
+import { progressFromSection } from "@/lib/scroll-progress";
 
 const emptySearch = { q: "", floor: "", category: "" };
 

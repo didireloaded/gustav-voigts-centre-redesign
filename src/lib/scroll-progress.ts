@@ -1,4 +1,4 @@
-/** Utilities for a scroll-linked intro with native page scrolling. */
+/** Utilities for native scroll-linked storytelling with native page scrolling. */
 export const clamp01 = (value: number) =>
   Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : 0;
 
