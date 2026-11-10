@@ -19,7 +19,7 @@ const items = [
 function Discover() {
   return (
     <>
-      <PageHero eyebrow="Discover" title="Highlights of the centre." intro="Photographs of the centre and businesses identified in its published gallery. No sample events or invented promotions." />
+      <PageHero eyebrow="Discover" title="Highlights of the centre." intro="Take a closer look at Gustav Voigts Centre and some of the businesses featured in its published photo gallery." />
       <section className="container-site grid gap-x-8 gap-y-16 py-20 md:grid-cols-2">
         {items.map((i, n) => (
           <article key={i.t} className={n % 2 ? "gvc-reveal-into-view md:mt-24" : "gvc-reveal-into-view"}>
