@@ -7,7 +7,6 @@ import { Hours } from "@/components/site/Hours";
 import { PHOTOS, CENTRE } from "@/data/centre";
 import { STORES } from "@/data/stores";
 import { meta } from "@/lib/meta";
-import { GeoIntro } from "@/components/site/GeoIntro";
 import { ArchitecturalJourney } from "@/components/site/ArchitecturalJourney";
 import { HeritageStory } from "@/components/site/HeritageStory";
 
@@ -29,7 +28,6 @@ const services = [
 function Home() {
   return (
     <>
-      <GeoIntro />
       <ArchitecturalJourney />
 
       <section id="welcome" className="container-site scroll-mt-28 grid gap-12 py-24 md:grid-cols-12 md:py-32">
@@ -68,7 +66,7 @@ function Home() {
 
       <section className="container-site py-24">
         <div className="flex flex-wrap items-end justify-between gap-6"><h2 className="gvc-scroll-intro display-lg">In the centre</h2><Link to="/stores" search={{ q: "", floor: "", category: "" }} className="font-semibold link-underline">All {STORES.length} businesses</Link></div>
-        <ul className="gvc-reveal-into-view mt-12 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="gvc-reveal-into-view mt-12 grid gap-x-7 gap-y-6 sm:grid-cols-2 xl:grid-cols-4">
           {featured.map((s) => STORES.find((x) => x.slug === s)!).map((s) => <li key={s.slug}><StoreTile store={s} /></li>)}
         </ul>
       </section>
