@@ -36,11 +36,11 @@ function Home() {
         <p className="eyebrow md:col-span-3">Welcome</p>
         <div className="md:col-span-9">
           <h2 className="gvc-scroll-intro display-lg max-w-4xl">Namibia's first mall, still at the centre of the capital.</h2>
-          <div className="mt-10 grid gap-8 text-lg leading-relaxed text-muted-foreground md:grid-cols-2">
+          <div className="gvc-reveal-into-view mt-10 grid gap-8 text-lg leading-relaxed text-muted-foreground md:grid-cols-2">
             <p>Gustav Voigts Centre began as the country's very first mall and today rises over three levels on Independence Avenue.</p>
             <p>Groceries, fashion, a pharmacy, banking, jewellers, a bookshop and the Avani Hotel — {STORES.length} businesses currently listed in the directory.</p>
           </div>
-          <dl className="mt-12 grid grid-cols-2 border-t-4 border-ink pt-6 sm:max-w-md">
+          <dl className="gvc-reveal-into-view mt-12 grid grid-cols-2 border-t-4 border-ink pt-6 sm:max-w-md">
             <div><dt className="text-sm font-semibold text-muted-foreground">Levels</dt><dd className="display-lg">3</dd></div>
             <div><dt className="text-sm font-semibold text-muted-foreground">Listed businesses</dt><dd className="display-lg">{STORES.length}</dd></div>
           </dl>
@@ -56,8 +56,8 @@ function Home() {
             {[{ i: MapPin, t: "Getting here", d: CENTRE.address, img: PHOTOS.entrance, to: "/visit" as const },
               { i: Car, t: "Parking", d: "Parking entrance on Independence Avenue.", img: PHOTOS.entrance2, to: "/visit" as const },
               { i: Clock, t: "Trading hours", d: "Mon–Fri 08:30–17:30 · Sat 08:30–13:00 · Sun 09:00–13:00", img: PHOTOS.mainCourt2, to: "/visit" as const }].map((c) => (
-              <Link key={c.t} to={c.to} className="group block">
-                <div className="aspect-[4/3] overflow-hidden"><Photo src={c.img} alt={c.t} className="h-full w-full transition-transform duration-700 group-hover:scale-105" /></div>
+              <Link key={c.t} to={c.to} className="group block gvc-reveal-into-view">
+                <div className="gvc-reveal-media aspect-[4/3] overflow-hidden"><Photo src={c.img} alt={c.t} className="h-full w-full transition-transform duration-700 group-hover:scale-105" /></div>
                 <div className="mt-5 flex items-center gap-3"><c.i className="size-5 text-yellow" aria-hidden /><h3 className="wordmark text-2xl">{c.t}</h3></div>
                 <p className="mt-2 text-ink-muted">{c.d}</p>
               </Link>
@@ -68,7 +68,7 @@ function Home() {
 
       <section className="container-site py-24">
         <div className="flex flex-wrap items-end justify-between gap-6"><h2 className="gvc-scroll-intro display-lg">In the centre</h2><Link to="/stores" search={{ q: "", floor: "", category: "" }} className="font-semibold link-underline">All {STORES.length} businesses</Link></div>
-        <ul className="mt-12 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="gvc-reveal-into-view mt-12 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((s) => STORES.find((x) => x.slug === s)!).map((s) => <li key={s.slug}><StoreTile store={s} /></li>)}
         </ul>
       </section>
@@ -85,7 +85,7 @@ function Home() {
         <h2 className="gvc-scroll-intro display-lg max-w-3xl">Everyday errands, under one roof.</h2>
         <ul className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <li key={s.t} className="border-t-4 border-ink pt-6">
+            <li key={s.t} className="gvc-reveal-into-view border-t-4 border-ink pt-6">
               <s.icon className="size-7" aria-hidden />
               <h3 className="wordmark mt-4 text-2xl">{s.t}</h3>
               <p className="mt-2 text-muted-foreground">{s.d}</p>
@@ -97,7 +97,7 @@ function Home() {
 
       <section className="bg-yellow text-accent-foreground">
         <div className="container-site grid gap-10 py-20 md:grid-cols-2 md:items-center">
-          <h2 className="display-lg">See you on Independence Avenue.</h2>
+          <h2 className="gvc-reveal-into-view display-lg">See you on Independence Avenue.</h2>
           <div><Hours /><a href={CENTRE.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 bg-ink px-6 py-4 font-bold text-ink-foreground">Get directions <ArrowRight className="size-5" aria-hidden /></a></div>
         </div>
       </section>

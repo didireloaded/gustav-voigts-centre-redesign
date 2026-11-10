@@ -43,7 +43,7 @@ function Contact() {
     <>
       <PageHero eyebrow="Contact" title="Talk to the centre." intro="For leasing, centre management and general enquiries. For a specific store, use the number on its directory page." />
       <section className="container-site grid gap-16 py-20 md:grid-cols-12">
-        <div className="space-y-6 md:col-span-5">
+        <div className="gvc-reveal-into-view space-y-6 md:col-span-5">
           <a href={CENTRE.phoneHref} className="flex items-center gap-4 border-t-4 border-ink pt-6"><Phone className="size-6" aria-hidden /><span className="wordmark text-3xl">{CENTRE.phone}</span></a>
           <a href={`mailto:${CENTRE.email}`} className="flex items-center gap-4 border-t-4 border-ink pt-6"><Mail className="size-6" aria-hidden /><span className="wordmark break-all text-2xl">{CENTRE.email}</span></a>
           <address className="border-t-4 border-ink pt-6 text-lg not-italic">Gustav Voigts Centre, Independence Avenue, Windhoek, Namibia</address>

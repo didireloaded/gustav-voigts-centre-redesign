@@ -29,7 +29,7 @@ export function SiteFooter() {
         </nav>
       </div>
       <div className="container-site overflow-hidden">
-        <p aria-hidden className="wordmark select-none whitespace-nowrap text-[clamp(3.5rem,13.5vw,13rem)] leading-[0.8] tracking-[-0.05em]">Gustav Voigts</p>
+        <p aria-hidden className="gvc-reveal-into-view wordmark select-none whitespace-nowrap text-[clamp(3.5rem,13.5vw,13rem)] leading-[0.8] tracking-[-0.05em]">Gustav Voigts</p>
       </div>
       <div className="container-site flex flex-col gap-2 border-t border-ink-border py-6 text-sm text-ink-muted sm:flex-row sm:justify-between">
         <p>© {new Date().getFullYear()} Gustav Voigts Centre, Windhoek.</p>

@@ -24,8 +24,8 @@ function Discover() {
       <PageHero eyebrow="Discover" title="Highlights of the centre." intro="No current events or promotions have been published. This page will carry them once confirmed by centre management." />
       <section className="container-site grid gap-x-8 gap-y-16 py-20 md:grid-cols-2">
         {items.map((i, n) => (
-          <article key={i.t} className={n % 2 ? "md:mt-24" : ""}>
-            <Photo src={i.img} alt={i.t} className="aspect-[4/3] w-full" />
+          <article key={i.t} className={n % 2 ? "gvc-reveal-into-view md:mt-24" : "gvc-reveal-into-view"}>
+            <Photo src={i.img} alt={i.t} className="gvc-reveal-media aspect-[4/3] w-full" />
             <h2 className="wordmark mt-6 text-3xl">{i.t}</h2>
             <p className="mt-2 text-lg text-muted-foreground">{i.d}</p>
             {i.slug ? <Link to="/stores/$slug" params={{ slug: i.slug }} className="mt-3 inline-block font-semibold link-underline">View details</Link>

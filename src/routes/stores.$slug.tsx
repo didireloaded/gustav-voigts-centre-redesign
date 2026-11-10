@@ -31,7 +31,7 @@ function StorePage() {
           <h1 className="display-xl mt-4 max-w-5xl">{s.name}</h1>
         </div>
       </section>
-      <section className="container-site grid gap-12 py-16 md:grid-cols-12">
+      <section className="gvc-reveal-into-view container-site grid gap-12 py-16 md:grid-cols-12">
         <dl className="space-y-8 md:col-span-5">
           <div><dt className="eyebrow text-muted-foreground">Level</dt><dd className="mt-2 flex items-center gap-2 text-2xl font-bold"><MapPin className="size-5" aria-hidden />{floorName(s.floor)}</dd></div>
           <div><dt className="eyebrow text-muted-foreground">Telephone</dt><dd className="mt-2"><a href={telHref(s.phone)} className="inline-flex items-center gap-2 bg-yellow px-5 py-3 text-xl font-bold"><Phone className="size-5" aria-hidden />{s.phone}</a></dd></div>
@@ -45,7 +45,7 @@ function StorePage() {
       </section>
       {nearby.length > 0 && (
         <section className="container-site pb-24">
-          <h2 className="wordmark text-3xl">Also on {floorName(s.floor)}</h2>
+          <h2 className="gvc-reveal-into-view wordmark text-3xl">Also on {floorName(s.floor)}</h2>
           <ul className="mt-6 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">{nearby.map((x) => <li key={x.slug}><StoreTile store={x} /></li>)}</ul>
         </section>
       )}
