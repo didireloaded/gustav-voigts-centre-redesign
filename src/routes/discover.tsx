@@ -5,23 +5,21 @@ import { PHOTOS } from "@/data/centre";
 import { meta } from "@/lib/meta";
 
 export const Route = createFileRoute("/discover")({
-  head: () => meta("Discover — Gustav Voigts Centre", "Highlights of Gustav Voigts Centre: the main court, the Avani Hotel, Clicks, Torga Optical and the Wellness Centre.", "/discover"),
+  head: () => meta("Discover — Gustav Voigts Centre", "Photographs of the centre and published tenant images from Gustav Voigts Centre in Windhoek.", "/discover"),
   component: Discover,
 });
 
 const items = [
-  { t: "The main court", d: "The heart of the centre, connecting shops on Street Level.", img: PHOTOS.mainCourt3, slug: null },
+  { t: "The main court", d: "A view of the centre’s main court, from its published photo gallery.", img: PHOTOS.mainCourt3, slug: null },
   { t: "Avani Hotel", d: "Accommodation on the Upper Level, in the middle of the city.", img: PHOTOS.avani2, slug: "avani-hotel" },
   { t: "Clicks", d: "Health and beauty on Street Level.", img: PHOTOS.clicks, slug: "clicks" },
   { t: "Torga Optical", d: "Optometrist on the Lower Ground.", img: PHOTOS.torga, slug: "torga-optical" },
-  { t: "Wellness Centre", d: "Beauty and health treatments on Street Level.", img: PHOTOS.wellness, slug: "wellness-centre" },
-  { t: "Flowers", d: "Flower Love on Street Level.", img: PHOTOS.flowers, slug: "flower-love" },
 ];
 
 function Discover() {
   return (
     <>
-      <PageHero eyebrow="Discover" title="Highlights of the centre." intro="No current events or promotions have been published. This page will carry them once confirmed by centre management." />
+      <PageHero eyebrow="Discover" title="Highlights of the centre." intro="Photographs of the centre and businesses identified in its published gallery. No sample events or invented promotions." />
       <section className="container-site grid gap-x-8 gap-y-16 py-20 md:grid-cols-2">
         {items.map((i, n) => (
           <article key={i.t} className={n % 2 ? "gvc-reveal-into-view md:mt-24" : "gvc-reveal-into-view"}>

@@ -53,3 +53,7 @@ No scrolling marquees, infinite autoplay video loops, bounce on routine UI, fake
 - Store search remains instantaneous even during rapid keyboard input; do not recreate cards or stagger all 31 results on each keystroke.
 - Do not claim the final experience has been browser-tested until an actual device/browser check is recorded.
 - Prefer transforms and opacity; no CSS `transition: all` or large blur/mask work.
+
+## 11 November 2026 optimization
+
+The home photographic journey now uses **crossfades**, not swipe masks. A single passive scroll listener requests one animation frame, and updates existing element opacity directly. It no longer sends progress through React state or repaints full-viewport clip-path masks on every scroll event. Three scene photos and the progress bar are controlled independently of page re-rendering. On mobile and for users requesting reduced motion, the useful static photo story remains. Scroll-enter effects use a route-scoped IntersectionObserver, not a document-wide MutationObserver. Do not reintroduce a globe, mock imagery, or continuously looping animations.

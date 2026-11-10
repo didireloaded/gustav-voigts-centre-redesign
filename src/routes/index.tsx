@@ -36,7 +36,7 @@ function Home() {
           <h2 className="gvc-scroll-intro display-lg max-w-4xl">Namibia's first mall, still at the centre of the capital.</h2>
           <div className="gvc-reveal-into-view mt-10 grid gap-8 text-lg leading-relaxed text-muted-foreground md:grid-cols-2">
             <p>Gustav Voigts Centre began as the country's very first mall and today rises over three levels on Independence Avenue.</p>
-            <p>Groceries, fashion, a pharmacy, banking, jewellers, a bookshop and the Avani Hotel — {STORES.length} businesses currently listed in the directory.</p>
+            <p>Groceries, fashion, a pharmacy, banking, jewellers, a bookshop and the Avani Hotel — {STORES.length} businesses in the centre’s published directory.</p>
           </div>
           <dl className="gvc-reveal-into-view mt-12 grid grid-cols-2 border-t-4 border-ink pt-6 sm:max-w-md">
             <div><dt className="text-sm font-semibold text-muted-foreground">Levels</dt><dd className="display-lg">3</dd></div>
