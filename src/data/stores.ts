@@ -1,3 +1,5 @@
+import { logoUrlForDomain } from "@/lib/store-logo";
+
 // Source: official store directory, gustavvoigtscentre.com.na/page/store-directory/
 export type Floor = "lower-ground" | "street-level" | "upper-level";
 
@@ -33,6 +35,10 @@ export interface Store {
   listedCategory: string;
   floor: Floor;
   phone: string;
+  /** Verified brand website host, not necessarily a store-specific landing page. */
+  domain: string | null;
+  /** Logo.dev candidate image URL. Falls back to typography if not available. */
+  logoUrl: string | null;
 }
 
 const raw: [string, Category, string, Floor, string][] = [
@@ -72,14 +78,39 @@ const raw: [string, Category, string, Floor, string][] = [
 export const slugify = (s: string) =>
   s.toLowerCase().replace(/['’()]/g, "").replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-export const STORES: Store[] = raw.map(([name, category, listedCategory, floor, phone]) => ({
-  slug: slugify(name),
-  name,
-  category,
-  listedCategory,
-  floor,
-  phone,
-}));
+/**
+ * Verified brand domains as of 2026-11-10. These are BRAND domains, not proof
+ * of current tenant status. Unknown/local brands intentionally remain null.
+ * Source register: docs/design/store-logo-sources.md
+ */
+export const VERIFIED_BRAND_DOMAINS: Readonly<Record<string, string>> = {
+  "Ackermans": "ackermans.co.za",
+  "Avani Hotel": "avanihotels.com",
+  "Cash Converters": "cashconverters.co.za",
+  "Checkers Supermarket": "checkers.co.za",
+  "Clicks": "clicks.co.za",
+  "Furn Mart (Pty) Ltd": "furnmart.com.na",
+  "Mr Price": "mrp.com",
+  "OK Furniture": "okfurniture.co.za",
+  "Patric Mavros": "patrickmavros.com",
+  "Pepstores": "pepstores.com",
+  "Standard Bank Namibia Limited": "standardbank.com.na",
+  "Torga Optical": "torga.com.na",
+};
+
+export const STORES: Store[] = raw.map(([name, category, listedCategory, floor, phone]) => {
+  const domain = VERIFIED_BRAND_DOMAINS[name] ?? null;
+  return {
+    slug: slugify(name),
+    name,
+    category,
+    listedCategory,
+    floor,
+    phone,
+    domain,
+    logoUrl: logoUrlForDomain(domain),
+  };
+});
 
 export const CATEGORIES = Array.from(new Set(STORES.map((s) => s.category))).sort();
 
