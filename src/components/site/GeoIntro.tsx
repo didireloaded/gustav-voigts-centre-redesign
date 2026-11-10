@@ -122,7 +122,7 @@ export function GeoIntro() {
           }}
         >
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/d/dc/The_Earth_seen_from_Apollo_17_%28AS17-148-22727%29.jpg"
+            src="https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/imagerecords/1000/1133/AS17-148-22727_lrg.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1881&w=1881"
             alt=""
             decoding="async"
             loading="eager"
