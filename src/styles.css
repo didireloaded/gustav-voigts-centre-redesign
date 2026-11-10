@@ -555,3 +555,8 @@ html.gvc-intro-is-active #site-header {
   .gvc-architecture-simple-story { padding: 2.4rem 1.25rem; }
   .gvc-architecture-simple-floor { flex-wrap: wrap; }
 }
+
+/* Keep mobile imagery above the parent background and the scrim below text. */
+.gvc-architecture-mobile-hero > .gvc-architecture-photo { z-index: 0; }
+.gvc-architecture-mobile-hero > .gvc-architecture-mobile-tint { z-index: 1; }
+.gvc-architecture-mobile-hero > .gvc-architecture-mobile-text { position: relative; z-index: 2; }

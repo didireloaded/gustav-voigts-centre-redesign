@@ -1,9 +1,7 @@
 name: Verify website build
 
 on:
-  push:
-    branches: [main, feature/cinematic-journey]
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   check:

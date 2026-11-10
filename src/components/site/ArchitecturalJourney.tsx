@@ -66,7 +66,7 @@ export function ArchitecturalJourney() {
             scale={state.interiorScale}
           />
           <ScenePhotograph
-            src={PHOTOS.mainCourt}
+            src={PHOTOS.atriumLevels}
             className="gvc-architecture-photo"
             opacity={state.levelsOpacity}
             scale={state.levelsScale}

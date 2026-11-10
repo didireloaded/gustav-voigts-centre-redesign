@@ -22,7 +22,9 @@ const img = (id: string) =>
 export const PHOTOS = {
   mainCourt: img("de88c81d947dc692d1fad53dcd09893e"),
   mainCourt2: img("d5145bdd9625245d165ffe590a79b149"),
-  mainCourt3: img("d2238baa2bd3f35ca1ac26a6ff270ae5"),
+  mainCourt3: "https://cms.my.na/assets/images/d2238baa2bd3f35ca1ac26a6ff270ae5.jpg",
+  atriumWide: img("9499154700c624510cc36b005bd80189"),
+  atriumLevels: img("b5c2ac3e1f7c3d1a755dd243cde5c52c"),
   entrance: img("a4e32a796018cd40d0ad383d1b9c9e52"),
   entrance2: img("238accbadc80c1975b9280aeb3b95d80"),
   avani: img("3101ceea067378fa4931cfd74a62f462"),
