@@ -59,4 +59,21 @@ describe("<StoreLogo />", () => {
     rerender(<StoreLogo name="Clicks" domain="clicks.co.za" />);
     expect(screen.getByRole("img", { name: "Clicks logo" })).toBeTruthy();
   });
+  it("does not expose a broken icon when the precomputed URL is absent", () => {
+    render(<StoreLogo name="Checkers Liquor Store" domain="checkers.co.za" logoUrl={null} />);
+    expect(screen.getByRole("img", { name: "Checkers Liquor Store monogram" }).textContent).toBe("CL");
+    expect(screen.queryByAltText("Checkers Liquor Store logo")).toBeNull();
+  });
+
+  it("keeps the logo region fixed even when an image fails", () => {
+    const { container } = render(<StoreLogo name="Mr Price" domain="mrp.com" />);
+    const frame = container.firstElementChild;
+    expect(frame?.className).toContain("h-16");
+    expect(frame?.className).toContain("w-[120px]");
+    fireEvent.error(screen.getByRole("img", { name: "Mr Price logo" }));
+    expect(container.firstElementChild).toBe(frame);
+    expect(frame?.className).toContain("h-16");
+    expect(frame?.className).toContain("w-[120px]");
+  });
+
 });

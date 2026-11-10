@@ -1,6 +1,6 @@
 # Store logo sourcing and review
 
-**Status:** Review branch only. The directory grid and store detail layouts have NOT been updated.
+**Status:** Approved integration staged in the review branch, including the directory tiles, store pages and Logo.dev attribution. GitHub Actions build/test verification required before fast-forwarding the connected main branch.
 
 This register follows `references/09-content-and-assets.md` and `03-website-foundations.md`. A brand's official domain is evidence of its identity, **not** independent confirmation that a Gustav Voigts Centre tenancy remains current. Store occupancy is inherited from the centre's published directory and still needs centre-management approval.
 
@@ -30,7 +30,7 @@ This register follows `references/09-content-and-assets.md` and `03-website-foun
 - The image endpoint is hosted by Logo.dev and brand image availability/correctness cannot be guaranteed by domain verification alone. **Visually inspect each returned logo before enabling it on the main grid**.
 - Logo.dev states commercial use of its free plan requires visible Logo.dev attribution: https://www.logo.dev/products/logo-api . Include this link in a suitable real footer/location when connecting the component to public directory pages, unless the plan terms have changed or a paid plan removes that requirement.
 - Verify tenant or owner permissions for public reproduction of logos when finalising launch assets.
-- The current review branch DOES NOT change `src/components/site/StoreTile.tsx`, does not publish a site and does not configure the project's live CDN.
+- The review branch updates `src/components/site/StoreTile.tsx`, store detail pages and the global footer. Do not publish to the original production domain without approval.
 
 ## Visual review checklist
 
@@ -42,4 +42,4 @@ This register follows `references/09-content-and-assets.md` and `03-website-foun
 - [ ] Keyboard and screen readers identify the store name; no layout shift during failure.
 - [ ] Licence and any Logo.dev attribution requirements satisfied before public deployment.
 
-After user approval, the follow-up change will import `StoreLogo` in `src/components/site/StoreTile.tsx` and optionally the individual store page, then verify the full rendered directory and mobile widths.
+Approved by the user. The directory tiles and individual store pages now use `StoreLogo`. Verify actual CDN artwork, failed-image fallback, accessible output, keyboard navigation and responsive widths before publishing.
