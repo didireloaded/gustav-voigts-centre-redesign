@@ -174,9 +174,8 @@ function ScenePhotograph({
   reveal?: number;
   revealDirection?: "up" | "side";
 }) {
-  const [failedSource, setFailedSource] = useState<string | null>(null);
-  const backup = PHOTOS.mainCourt3;
-  const imageSrc = failedSource !== src ? src : failedSource !== backup ? backup : null;
+  const [failedSources, setFailedSources] = useState<string[]>([]);
+  const imageSrc = [src, PHOTOS.mainCourt3].find((candidate) => !failedSources.includes(candidate)) ?? null;
   const clip = revealDirection === "side"
     ? `inset(0 ${(1 - reveal) * 100}% 0 0)`
     : `inset(${(1 - reveal) * 100}% 0 0 0)`;
@@ -197,7 +196,7 @@ function ScenePhotograph({
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : undefined}
           decoding="async"
-          onError={() => setFailedSource(imageSrc)}
+          onError={() => setFailedSources((current) => [...current, imageSrc])}
         />
       )}
     </div>
