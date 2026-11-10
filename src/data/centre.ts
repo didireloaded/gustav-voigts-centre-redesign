@@ -7,7 +7,7 @@ export const CENTRE = {
   facebook: "https://www.facebook.com/713498252116359",
   officialSite: "https://gustavvoigtscentre.com.na/",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Gustav+Voigts+Centre+Independence+Avenue+Windhoek",
-  hoursNote: "General centre trading hours; tenants may vary. Pending verification with centre management.",
+  hoursNote: "General trading hours published on the centre website; individual tenants may have different hours.",
   hours: [
     { days: "Monday – Friday", time: "08:30 – 17:30" },
     { days: "Saturday", time: "08:30 – 13:00" },

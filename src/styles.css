@@ -364,24 +364,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .gvc-reveal-into-view {
-      animation: gvc-editorial-enter linear both;
-      animation-timeline: view(block);
-      animation-range: entry 0% entry 78%;
-    }
-    .gvc-reveal-media {
-      animation: gvc-editorial-media linear both;
-      animation-timeline: view(block);
-      animation-range: entry 0% entry 80%;
-    }
-    .gvc-heritage-rule {
-      transform-origin: left center;
-      animation: gvc-editorial-rule linear both;
-      animation-timeline: view(block);
-      animation-range: entry 0% entry 88%;
-    }
-  }
+  /* IntersectionObserver handles below-fold reveals consistently. */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -404,7 +387,7 @@
     transition:
       opacity 680ms cubic-bezier(.16, 1, .3, 1),
       transform 760ms cubic-bezier(.16, 1, .3, 1),
-      clip-path 900ms cubic-bezier(.16, 1, .3, 1);
+      clip-path 540ms cubic-bezier(.16, 1, .3, 1);
   }
   .gvc-scroll-prepared.gvc-scroll-active {
     opacity: 1 !important;
@@ -449,4 +432,51 @@
    without forcing visitors through several full screens of empty movement. */
 @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
   .gvc-architecture { height: 245svh; }
+}
+
+/* Performance: scroll-linked scene layers crossfade only.
+   No swipe masks, large animated clipping or per-frame scaling. */
+.gvc-architecture-photo {
+  clip-path: none !important;
+  transform: none !important;
+  transition: none !important;
+  background: transparent;
+}
+.gvc-architecture-art {
+  isolation: isolate;
+  background: #232523;
+}
+.gvc-architecture-art .gvc-architecture-photo { will-change: opacity; }
+.gvc-architecture-photo img {
+  transform: none !important;
+  filter: none !important;
+}
+.gvc-architecture-copy,
+.gvc-architecture-levels { will-change: opacity; }
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .gvc-architecture { height: 210svh; }
+}
+@media (max-width: 767px) {
+  .gvc-architecture { height: auto; }
+  .gvc-architecture-simple-photo,
+  .gvc-architecture-simple-interior {
+    min-width: 0;
+    overflow: hidden;
+  }
+  .gvc-architecture-mobile-text {
+    padding-top: 2rem;
+    padding-bottom: clamp(2rem, 7svh, 4.5rem);
+  }
+  .gvc-architecture-mobile-text h1 { font-size: clamp(2.5rem, 11vw, 4.5rem); }
+  .gvc-architecture-mobile-actions a { min-height: 48px; }
+  .gvc-scroll-prepared[data-scroll-reveal="media"] {
+    clip-path: none !important;
+    transform: none !important;
+  }
+  .gvc-store-profile-banner { min-height: 220px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gvc-architecture-art .gvc-architecture-photo,
+  .gvc-architecture-copy,
+  .gvc-architecture-levels { will-change: auto; }
 }
