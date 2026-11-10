@@ -2,7 +2,7 @@ export function PageHero({ eyebrow, title, intro }: { eyebrow: string; title: st
   return (
     <section className="border-b border-border bg-neutral-surface">
       <div className="container-site grid gap-8 py-16 md:grid-cols-12 md:py-24">
-        <div className="md:col-span-8 animate-rise">
+        <div className="md:col-span-8">
           <p className="eyebrow"><span className="mr-3 inline-block h-3 w-3 bg-yellow align-middle" aria-hidden />{eyebrow}</p>
           <h1 className="display-xl mt-6">{title}</h1>
         </div>

@@ -110,7 +110,7 @@ export function ArchitecturalJourney() {
           <div className="gvc-architecture-actions">
             <span className="gvc-architecture-scroll-hint"><ArrowDown size={16} aria-hidden="true" /> Scroll to explore</span>
             <div className="gvc-architecture-buttons">
-              <a href="#welcome" className="gvc-architecture-skip">Skip journey</a>
+              
               <Link to="/stores" search={emptySearch} className="gvc-architecture-primary gvc-pressable">Find a store <ArrowUpRight size={17} aria-hidden="true" /></Link>
             </div>
           </div>
@@ -148,7 +148,7 @@ export function ArchitecturalJourney() {
           ))}
         </div>
       </div>
-      <p className="sr-only">This page uses a scroll-linked photographic journey from the exterior of Gustav Voigts Centre to its interior, showing three levels. You may skip the journey or visit the complete searchable store directory.</p>
+      <p className="sr-only">This page uses a scroll-linked photographic journey from the exterior of Gustav Voigts Centre to its interior, showing three levels. You may also navigate directly to the searchable store directory.</p>
     </section>
   );
 }
