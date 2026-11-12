@@ -480,3 +480,28 @@
   .gvc-architecture-copy,
   .gvc-architecture-levels { will-change: auto; }
 }
+
+/* Smoothness pass: reveals animate only opacity + transform (GPU-composited).
+   No clip-path painting, shorter travel, one consistent easing curve. */
+@media (prefers-reduced-motion: no-preference) {
+  .gvc-scroll-prepared {
+    transform: translate3d(0, 20px, 0) !important;
+    transition:
+      opacity 560ms cubic-bezier(.22, 1, .36, 1),
+      transform 640ms cubic-bezier(.22, 1, .36, 1) !important;
+  }
+  .gvc-scroll-prepared.gvc-reveal-media,
+  .gvc-scroll-prepared[data-scroll-reveal="media"] {
+    clip-path: none !important;
+    transform: translate3d(0, 20px, 0) scale(1.02) !important;
+  }
+  .gvc-scroll-prepared.gvc-scroll-active.gvc-reveal-media,
+  .gvc-scroll-prepared.gvc-scroll-active[data-scroll-reveal="media"] {
+    transform: translate3d(0, 0, 0) scale(1) !important;
+  }
+  .gvc-store-tile { transition: background-color 180ms ease, transform 260ms cubic-bezier(.22,1,.36,1); }
+  .gvc-store-profile-banner img { transition: transform 600ms cubic-bezier(.22,1,.36,1); }
+  .gvc-architecture-progress span { transform-origin: left center; will-change: transform; }
+}
+.gvc-architecture-stage { contain: layout paint; }
+.gvc-architecture-photo img { backface-visibility: hidden; }

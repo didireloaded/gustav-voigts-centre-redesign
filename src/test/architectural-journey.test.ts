@@ -41,4 +41,4 @@ describe("optimized scroll crossfade", () => {
     expect(getArchitecturalScene(9).progress).toBe(1);
     expect(getArchitecturalScene(NaN).progress).toBe(0);
   });
-}
+});
