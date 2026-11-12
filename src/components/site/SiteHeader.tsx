@@ -40,13 +40,13 @@ export function SiteHeader() {
       const last = focusables[focusables.length - 1];
       if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();
-        last.focus();
+        last?.focus();
       } else if (!event.shiftKey && document.activeElement === last) {
         event.preventDefault();
-        first.focus();
+        first?.focus();
       } else if (!panelRef.current?.contains(document.activeElement)) {
         event.preventDefault();
-        first.focus();
+        first?.focus();
       }
     };
 

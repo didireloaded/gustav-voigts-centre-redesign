@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 type S = { q: string; floor: string; category: string };
 export const Route = createFileRoute("/stores/")({
-  validateSearch: (s: Record<string, unknown>): S => ({ q: String(s.q ?? ""), floor: String(s.floor ?? ""), category: String(s.category ?? "") }),
+  validateSearch: (s: Record<string, unknown>): S => ({ q: String(s["q"] ?? ""), floor: String(s["floor"] ?? ""), category: String(s["category"] ?? "") }),
   head: () => meta("Store directory — Gustav Voigts Centre", "Search all 31 listed businesses at Gustav Voigts Centre by name, category and level.", "/stores"),
   component: Stores,
 });

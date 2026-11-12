@@ -13,7 +13,7 @@ export function FloorFinder({ dark = false }: { dark?: boolean }) {
     if (!d) return;
     e.preventDefault();
     const n = (i + d + FLOORS.length) % FLOORS.length;
-    setFloor(FLOORS[n].id);
+    const next = FLOORS[n]; if (next) setFloor(next.id);
     tabs.current[n]?.focus();
   };
 
