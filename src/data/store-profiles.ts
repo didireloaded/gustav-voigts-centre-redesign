@@ -14,11 +14,11 @@ export type StoreProfile = {
   imageAlt: string | null;
   imageCaption: string;
   specificImage: boolean;
-  sourceUrl?: string;
-  officialUrl?: string;
-  unit?: string;
+  sourceUrl?: string | undefined;
+  officialUrl?: string | undefined;
+  unit?: string | undefined;
   /** Verified current business number where it differs from the old directory. */
-  phoneOverride?: string;
+  phoneOverride?: string | undefined;
 };
 
 /**
